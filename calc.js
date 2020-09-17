@@ -1,7 +1,7 @@
 $(function() {
 	$("select,input").change(function() {
 		var num = $('#power').val() / $('input[name="type"]').val();
-		var limit = num * 2;
+		var limit = Math.round(num * 2);
 		$('#weaponpowerlimit').val(limit);
 		
 		$(".mul").each(function(index, element){
