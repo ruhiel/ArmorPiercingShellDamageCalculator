@@ -1,6 +1,6 @@
 $(function() {
 	$("select,input").change(function() {
-		var num = $('#power').val() / $('input[name="type"]').val();
+		var num = $('#power').val() / $('input[name="type"]:checked').val();
 		var limit = Math.round(num * 2);
 		$('#weaponpowerlimit').val(limit);
 		
