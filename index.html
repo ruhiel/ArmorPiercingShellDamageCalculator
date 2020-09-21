@@ -1,221 +1,224 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-	<title>徹甲榴弾ダメージ計算機</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="calc.js"></script>
+  <title>徹甲榴弾ダメージ計算機</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="calc.js"></script>
+  <script src="jump.js"></script>
 </head>
 
 <body>
- 
-<table class="tbl-m01 m02">
-  <tr>
-    <th>武器表示攻撃力</th>
-    <td><input id="power" type="number" value="0"/></td>
-  </tr>
-  <tr>
-    <th>武器種</th>
-    <td>
-    	<input type="radio" name="type" value="1.3" checked/>ライトボウガン
-		<input type="radio" name="type" value="1.5" />ヘビィボウガン
-	</td>
-  </tr>
-  <tr>
-    <th>砲術</th>
-    <td>
-      <select class="mul" name="砲術">
-    	<option value="1">---</option>
-    	<option value="1.1">砲術Lv1</option>
-    	<option value="1.2">砲術Lv2</option>
-    	<option value="1.3" selected>砲術Lv3</option>
-    	<option value="1.4">砲術Lv4</option>
-    	<option value="1.5">砲術Lv5</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>攻撃</th>
-    <td>
-      <select class="add" name="攻撃">
-    	<option value="0">---</option>
-    	<option value="3">攻撃Lv1</option>
-    	<option value="6">攻撃Lv2</option>
-    	<option value="9">攻撃Lv3</option>
-    	<option value="12">攻撃Lv4</option>
-    	<option value="15">攻撃Lv5</option>
-    	<option value="18">攻撃Lv6</option>
-    	<option value="21">攻撃Lv7</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>挑戦者</th>
-    <td>
-      <select class="add" name="挑戦者">
-    	<option value="0">---</option>
-    	<option value="4">挑戦者Lv1</option>
-    	<option value="8">挑戦者Lv2</option>
-    	<option value="12">挑戦者Lv3</option>
-    	<option value="16">挑戦者Lv4</option>
-    	<option value="20">挑戦者Lv5</option>
-    	<option value="24">挑戦者Lv6</option>
-    	<option value="28">挑戦者Lv7</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>フルチャージ</th>
-    <td>
-      <select class="add" name="フルチャージ">
-    	<option value="0">---</option>
-    	<option value="5">フルチャージLv1</option>
-    	<option value="10">フルチャージLv2</option>
-    	<option value="20">フルチャージLv3</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>逆恨み</th>
-    <td>
-      <select class="add" name="逆恨み">
-    	<option value="0">---</option>
-    	<option value="5">逆恨みLv1</option>
-    	<option value="10">逆恨みLv2</option>
-    	<option value="15">逆恨みLv3</option>
-    	<option value="20">逆恨みLv4</option>
-    	<option value="25">逆恨みLv5</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>災禍転福</th>
-    <td>
-      <select class="add" name="災禍転福">
-    	<option value="0">---</option>
-    	<option value="12">災禍転福Lv1</option>
-    	<option value="15">災禍転福Lv2</option>
-    	<option value="18">災禍転福Lv3</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>食事効果</th>
-    <td>
-      <select class="add" name="ネコの攻撃力UP">
-    	<option value="0">---</option>
-    	<option value="5">攻撃力UP【小】</option>
-    	<option value="10">攻撃力UP【中】</option>
-    	<option value="15" selected>攻撃力UP【大】</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>ネコの砲撃術</th>
-    <td>
-      <select class="mul" name="ネコの砲撃術">
-    	<option value="1">---</option>
-    	<option value="1.15" selected>あり</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>ネコの短期催眠術</th>
-    <td>
-      <select class="add" name="ネコの短期催眠術">
-    	<option value="0" selected>---</option>
-    	<option value="9">あり</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>鬼人薬</th>
-    <td>
-      <select class="add" name="鬼人薬">
-      	<option value="0">---</option>
-    	<option value="5">鬼人薬/ニトロダケ(キノコ大好き)</option>
-    	<option value="7" selected>鬼人薬G</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>怪力の種</th>
-    <td>
-      <select class="add" name="怪力の種">
-      	<option value="0">---</option>
-    	<option value="10" selected>怪力の種</option>
-    	<option value="25">怪力の丸薬</option>
-    	<option value="15">ネコの休憩術</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>鬼人の粉塵</th>
-    <td>
-      <select class="add" name="鬼人の粉塵">
-    	<option value="0">---</option>
-    	<option value="10" selected>あり</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>鬼人弾</th>
-    <td>
-      <select class="add" name="鬼人弾">
-    	<option value="0" selected>---</option>
-    	<option value="10">あり</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>オニボックリ</th>
-    <td>
-      <select class="add" name="オニボックリ">
-    	<option value="0" selected>---</option>
-    	<option value="5">あり</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>力の護符</th>
-    <td>
-      <select class="add" name="力の護符">
-    	<option value="0">---</option>
-    	<option value="6" selected>あり</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>力の爪</th>
-    <td>
-      <select class="add" name="力の爪">
-    	<option value="0">---</option>
-    	<option value="9" selected>あり</option>
-  		</select>
-  	</td>
-  </tr>
-  <tr>
-    <th>武器倍率</th>
-    <td><input id="weaponpower" type="number" value="0" readonly/></td>
-  </tr>
-  <tr>
-    <th>武器倍率上限</th>
-    <td><input id="weaponpowerlimit" type="number" value="0" readonly/></td>
-  </tr>
-  <tr>
-    <th>徹甲榴弾Lv3固定ダメージ</th>
-    <td><input id="lv3" type="number" value="0" readonly/></td>
-  </tr>
-  <tr>
-    <th>徹甲榴弾Lv2固定ダメージ</th>
-    <td><input id="lv2" type="number" value="0" readonly/></td>
-  </tr>
-  <tr>
-    <th>徹甲榴弾Lv1固定ダメージ</th>
-    <td><input id="lv1" type="number" value="0" readonly/></td>
-  </tr>
-</table>
+
+  <table class="tbl-m01 m02">
+    <tr>
+      <th>武器表示攻撃力</th>
+      <td><input id="power" type="number" value="0" /></td>
+    </tr>
+    <tr>
+      <th>武器種</th>
+      <td>
+        <input type="radio" name="type" value="1.3" checked />ライトボウガン
+        <input type="radio" name="type" value="1.5" />ヘビィボウガン
+      </td>
+    </tr>
+    <tr>
+      <th>砲術</th>
+      <td>
+        <select class="mul" name="砲術">
+          <option value="1">---</option>
+          <option value="1.1">砲術Lv1</option>
+          <option value="1.2">砲術Lv2</option>
+          <option value="1.3" selected>砲術Lv3</option>
+          <option value="1.4">砲術Lv4</option>
+          <option value="1.5">砲術Lv5</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>攻撃</th>
+      <td>
+        <select class="add" name="攻撃">
+          <option value="0">---</option>
+          <option value="3">攻撃Lv1</option>
+          <option value="6">攻撃Lv2</option>
+          <option value="9">攻撃Lv3</option>
+          <option value="12">攻撃Lv4</option>
+          <option value="15">攻撃Lv5</option>
+          <option value="18">攻撃Lv6</option>
+          <option value="21">攻撃Lv7</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>挑戦者</th>
+      <td>
+        <select class="add" name="挑戦者">
+          <option value="0">---</option>
+          <option value="4">挑戦者Lv1</option>
+          <option value="8">挑戦者Lv2</option>
+          <option value="12">挑戦者Lv3</option>
+          <option value="16">挑戦者Lv4</option>
+          <option value="20">挑戦者Lv5</option>
+          <option value="24">挑戦者Lv6</option>
+          <option value="28">挑戦者Lv7</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>フルチャージ</th>
+      <td>
+        <select class="add" name="フルチャージ">
+          <option value="0">---</option>
+          <option value="5">フルチャージLv1</option>
+          <option value="10">フルチャージLv2</option>
+          <option value="20">フルチャージLv3</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>逆恨み</th>
+      <td>
+        <select class="add" name="逆恨み">
+          <option value="0">---</option>
+          <option value="5">逆恨みLv1</option>
+          <option value="10">逆恨みLv2</option>
+          <option value="15">逆恨みLv3</option>
+          <option value="20">逆恨みLv4</option>
+          <option value="25">逆恨みLv5</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>災禍転福</th>
+      <td>
+        <select class="add" name="災禍転福">
+          <option value="0">---</option>
+          <option value="12">災禍転福Lv1</option>
+          <option value="15">災禍転福Lv2</option>
+          <option value="18">災禍転福Lv3</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>食事効果</th>
+      <td>
+        <select class="add" name="ネコの攻撃力UP">
+          <option value="0">---</option>
+          <option value="5">攻撃力UP【小】</option>
+          <option value="10">攻撃力UP【中】</option>
+          <option value="15" selected>攻撃力UP【大】</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>ネコの砲撃術</th>
+      <td>
+        <select class="mul" name="ネコの砲撃術">
+          <option value="1">---</option>
+          <option value="1.15" selected>あり</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>ネコの短期催眠術</th>
+      <td>
+        <select class="add" name="ネコの短期催眠術">
+          <option value="0" selected>---</option>
+          <option value="9">あり</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>鬼人薬</th>
+      <td>
+        <select class="add" name="鬼人薬">
+          <option value="0">---</option>
+          <option value="5">鬼人薬/ニトロダケ(キノコ大好き)</option>
+          <option value="7" selected>鬼人薬G</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>怪力の種</th>
+      <td>
+        <select class="add" name="怪力の種">
+          <option value="0">---</option>
+          <option value="10" selected>怪力の種</option>
+          <option value="25">怪力の丸薬</option>
+          <option value="15">ネコの休憩術</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>鬼人の粉塵</th>
+      <td>
+        <select class="add" name="鬼人の粉塵">
+          <option value="0">---</option>
+          <option value="10" selected>あり</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>鬼人弾</th>
+      <td>
+        <select class="add" name="鬼人弾">
+          <option value="0" selected>---</option>
+          <option value="10">あり</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>オニボックリ</th>
+      <td>
+        <select class="add" name="オニボックリ">
+          <option value="0" selected>---</option>
+          <option value="5">あり</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>力の護符</th>
+      <td>
+        <select class="add" name="力の護符">
+          <option value="0">---</option>
+          <option value="6" selected>あり</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>力の爪</th>
+      <td>
+        <select class="add" name="力の爪">
+          <option value="0">---</option>
+          <option value="9" selected>あり</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>武器倍率</th>
+      <td><input id="weaponpower" type="number" value="0" readonly /></td>
+    </tr>
+    <tr>
+      <th>武器倍率上限</th>
+      <td><input id="weaponpowerlimit" type="number" value="0" readonly /></td>
+    </tr>
+    <tr>
+      <th>徹甲榴弾Lv3固定ダメージ</th>
+      <td><input id="lv3" type="number" value="0" readonly /></td>
+    </tr>
+    <tr>
+      <th>徹甲榴弾Lv2固定ダメージ</th>
+      <td><input id="lv2" type="number" value="0" readonly /></td>
+    </tr>
+    <tr>
+      <th>徹甲榴弾Lv1固定ダメージ</th>
+      <td><input id="lv1" type="number" value="0" readonly /></td>
+    </tr>
+  </table>
 
 </body>
+
 </html>
